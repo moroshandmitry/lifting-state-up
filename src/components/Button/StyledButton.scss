@@ -1,0 +1,25 @@
+$primary-color: #065ab4;
+$primary-second-color: #097df8;
+
+// 1rem => 16px
+$font-size: 1rem;
+$border-radius: 0.4rem;
+
+.btn {
+  padding: 0.7rem;
+  font-size: $font-size;
+  font-weight: 700;
+  outline: 0;
+  border: none;
+  border-radius: $border-radius;
+  color: #fff;
+  cursor: pointer;
+
+  &.btn-primary {
+    background-color: $primary-color;
+
+    &:hover {
+      background-color: $primary-second-color;
+    }
+  }
+}

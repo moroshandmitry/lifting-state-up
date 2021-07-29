@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
+
 import { Timer } from "./components/Timer";
 import { DateTime } from "./components/DateTime";
-import "./styles.css";
+
+import { Button } from "./components/Button/Button";
+import "./components/Button/StyledButton.scss";
+
+import "./styles.scss";
 
 export const App = () => {
   // close STATE
@@ -35,12 +40,6 @@ export const App = () => {
   };
   // date FUNCTION
 
-  // updated seconds and date
-  useEffect(() => {
-    console.log("seconds and date");
-  }, [seconds, date]);
-  // updated seconds and date
-
   // updated close seconds and date
   useEffect(() => {
     const toggleClose = `${close ? "Clos" : "Show"}ed`;
@@ -56,14 +55,18 @@ export const App = () => {
 
   return (
     <div className="App">
-      <button onClick={handleToggle}>{close ? "Show" : "Clos"}ed</button>
-      <hr />
+      <Button btnClass="btn btn-primary" onClickFromBtn={handleToggle}>
+        {close ? "Show" : "Clos"}ed
+      </Button>
       {close ? (
-        `Component will unmounted with ${seconds} seconds and ${date} date`
+        <>
+          <p>Component will unmounted!</p>
+          <p>{seconds} seconds</p>
+          <p>{date} date</p>
+        </>
       ) : (
         <>
           <Timer seconds={seconds} onAddSeconds={handleAddSeconds} />
-          <hr />
           <DateTime date={date} onGetDate={getDate} />
         </>
       )}
